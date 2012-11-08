@@ -11,7 +11,10 @@ foreach( $file in $less_files )
 	}
 }
 if( $build ){
-	` cscript /nologo lessc.wsf kickstrap.less kickstrap.css
+	& cscript /nologo lessc.wsf kickstrap.less kickstrap.css
+	if( $LastExitCode -ne 0 ) {
+		throw "Error encountered while compiling kickstrap"
+	}
 }
 else {
 	"No changes detected in LESS files. Compilation cancelled."
